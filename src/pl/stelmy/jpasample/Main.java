@@ -4,6 +4,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import pl.stelmy.jpasample.sample.SampleData;
+
 /**
  * Main class.
  * 
@@ -26,6 +28,9 @@ public class Main {
 
 	// Begins the transaction.
 	entityManager.getTransaction().begin();
+
+	// Adds sample data.
+	(new SampleData(entityManager)).createSampleData();
 
 	// Commits the transaction.
 	entityManager.getTransaction().commit();

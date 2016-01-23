@@ -7,9 +7,11 @@
 
 		<!-- class definitions -->
 		<class>pl.stelmy.jpasample.domain.BaseEntity</class>
+		<class>pl.stelmy.jpasample.domain.person.Person</class>
+		<class>pl.stelmy.jpasample.domain.person.Name</class>
 
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/jpasample" />
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
