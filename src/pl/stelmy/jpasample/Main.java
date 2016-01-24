@@ -4,7 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import pl.stelmy.jpasample.sample.SampleData;
+import pl.stelmy.jpasample.sample.DataFiller;
 
 /**
  * Main class.
@@ -30,7 +30,7 @@ public class Main {
 	entityManager.getTransaction().begin();
 
 	// Adds sample data.
-	(new SampleData(entityManager)).createSampleData();
+	new DataFiller(entityManager);
 
 	// Commits the transaction.
 	entityManager.getTransaction().commit();

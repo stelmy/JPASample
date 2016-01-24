@@ -1,4 +1,4 @@
-package pl.stelmy.jpasample.domain;
+package pl.stelmy.jpasample.domain.common;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

@@ -6,9 +6,12 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<!-- class definitions -->
-		<class>pl.stelmy.jpasample.domain.BaseEntity</class>
+		<class>pl.stelmy.jpasample.domain.common.BaseEntity</class>
 		<class>pl.stelmy.jpasample.domain.person.Person</class>
 		<class>pl.stelmy.jpasample.domain.person.Name</class>
+		<class>pl.stelmy.jpasample.domain.place.Address</class>
+		<class>pl.stelmy.jpasample.domain.place.Country</class>
+		<class>pl.stelmy.jpasample.domain.place.Locality</class>
 
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />

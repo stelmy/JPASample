@@ -14,13 +14,13 @@ public class Name {
     /**
      * The first name.
      */
-    @Column(name = ColumnNames.FIRST_NAME)
+    @Column(name = ColumnNames.FIRST_NAME, length = 50)
     private String firstName;
 
     /**
      * The last name.
      */
-    @Column(name = ColumnNames.LAST_NAME)
+    @Column(name = ColumnNames.LAST_NAME, length = 50)
     private String lastName;
 
     /**
@@ -28,6 +28,19 @@ public class Name {
      */
     public Name() {
 	super();
+    }
+
+    /**
+     * Instantiates new name.
+     * 
+     * @param firstName
+     *            the first name
+     * @param lastName
+     *            the last name
+     * @return the name
+     */
+    public static Name name(String firstName, String lastName) {
+	return new Name(firstName, lastName);
     }
 
     /**
