@@ -6,10 +6,10 @@ package pl.stelmy.jpasample.domain.common;
  * @author stelmy
  */
 public enum TableName {
-    PERSON(Values.PERSON),
     ADDRESS(Values.ADDRESS),
     COUNTRY(Values.COUNTRY),
-    LOCALITY(Values.LOCALITY);
+    LOCALITY(Values.LOCALITY),
+    PERSON(Values.PERSON);
 
     /**
      * The table name.
@@ -39,9 +39,9 @@ public enum TableName {
      * Following class contains constants with table names.
      */
     public class Values {
-	public static final String PERSON = "PERSON";
 	public static final String ADDRESS = "ADDRESS";
 	public static final String COUNTRY = "COUNTRY";
 	public static final String LOCALITY = "LOCALITY";
+	public static final String PERSON = "PERSON";
     }
 }

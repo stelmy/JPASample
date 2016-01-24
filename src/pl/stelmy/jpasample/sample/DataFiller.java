@@ -1,5 +1,7 @@
 package pl.stelmy.jpasample.sample;
 
+import static pl.stelmy.jpasample.dictionary.Gender.FEMALE;
+import static pl.stelmy.jpasample.dictionary.Gender.MALE;
 import static pl.stelmy.jpasample.domain.person.Name.name;
 import static pl.stelmy.jpasample.domain.place.Address.newAddress;
 import static pl.stelmy.jpasample.domain.place.Country.newCountry;
@@ -12,6 +14,7 @@ import java.util.Random;
 import javax.persistence.EntityManager;
 
 import pl.stelmy.jpasample.domain.common.BaseEntity;
+import pl.stelmy.jpasample.domain.person.Employee;
 import pl.stelmy.jpasample.domain.person.Name;
 import pl.stelmy.jpasample.domain.person.Person;
 import pl.stelmy.jpasample.domain.place.Address;
@@ -87,14 +90,16 @@ public class DataFiller {
      */
     private void createPersons() {
 	List<Person> persons = new ArrayList<Person>();
-	persons.add(new Person("Jan", "Kowalski", findRandomAddress()));
-	persons.add(new Person("Adam", "Nowak", findRandomAddress()));
-	persons.add(new Person("Gra퓓na", "Nowak", findRandomAddress(), previousNames(name("Gra퓓na", "Matysik"))));
+	persons.add(new Employee("Jan", "Kowalski", MALE, findRandomAddress()));
+	persons.add(new Employee("Adam", "Nowak", MALE, findRandomAddress()));
+	persons.add(new Employee("Gra퓓na", "Nowak", FEMALE, findRandomAddress(),
+		previousNames(name("Gra퓓na", "Matysik"))));
 	saveData(persons);
     }
 
     /**
      * Creates some countries.
+     * 
      * @return the countries
      */
     private List<Country> createCountries() {
@@ -108,7 +113,7 @@ public class DataFiller {
 	saveData(countries);
 	return countries;
     }
-    
+
     private List<Locality> createLocalities() {
 	List<Locality> localities = new ArrayList<Locality>();
 	localities.add(newLocality("Warsaw", findCountryByName("Poland")));
@@ -133,15 +138,15 @@ public class DataFiller {
 	}
 	return nameList;
     }
-    
+
     private Country findCountryByName(String name) {
 	return countries.stream().filter(country -> country.getName().equals(name)).findFirst().get();
     }
-    
+
     private Locality findLocalityByName(String name) {
 	return localities.stream().filter(locality -> locality.getName().equals(name)).findFirst().get();
     }
-    
+
     private Address findRandomAddress() {
 	return (Address) findRandomEntity(addresses);
     }

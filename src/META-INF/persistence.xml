@@ -7,6 +7,7 @@
 
 		<!-- class definitions -->
 		<class>pl.stelmy.jpasample.domain.common.BaseEntity</class>
+		<class>pl.stelmy.jpasample.domain.common.BaseTablePerClassEntity</class>
 		<class>pl.stelmy.jpasample.domain.person.Person</class>
 		<class>pl.stelmy.jpasample.domain.person.Name</class>
 		<class>pl.stelmy.jpasample.domain.place.Address</class>
