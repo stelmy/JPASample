@@ -4,6 +4,7 @@ import static pl.stelmy.jpasample.domain.common.TableName.Values.PERSON;
 import static pl.stelmy.jpasample.domain.person.Person.ColumnNames.PERSON_TYPE;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CollectionTable;
@@ -19,6 +20,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import pl.stelmy.jpasample.dictionary.Gender;
 import pl.stelmy.jpasample.domain.common.BaseEntity;
@@ -56,6 +59,13 @@ public abstract class Person extends BaseEntity {
     private Gender gender;
 
     /**
+     * The date of birth.
+     */
+    @Column(name = ColumnNames.BIRTHDATE)
+    @Temporal(TemporalType.DATE)
+    private Date birthDate;
+
+    /**
      * The address.
      */
     @ManyToOne
@@ -66,7 +76,7 @@ public abstract class Person extends BaseEntity {
      * Default constructor.
      */
     public Person() {
-	super();
+        super();
     }
 
     /**
@@ -78,15 +88,18 @@ public abstract class Person extends BaseEntity {
      *            the last name
      * @param gender
      *            the gender
+     * @param birthDate
+     *            the date of birth
      * @param address
      *            the address
      */
-    public Person(String firstName, String lastName, Gender gender, Address address) {
-	super();
-	this.name = new Name(firstName, lastName);
-	this.gender = gender;
-	this.previousNames = new ArrayList<Name>();
-	this.address = address;
+    public Person(String firstName, String lastName, Gender gender, Date birthDate, Address address) {
+        super();
+        this.name = new Name(firstName, lastName);
+        this.gender = gender;
+        this.birthDate = birthDate;
+        this.previousNames = new ArrayList<Name>();
+        this.address = address;
     }
 
     /**
@@ -98,28 +111,32 @@ public abstract class Person extends BaseEntity {
      *            the last name
      * @param gender
      *            the gender
+     * @param birthDate
+     *            the date of birth
      * @param address
      *            the address
      * @param previousNames
      *            the previous names
      */
-    public Person(String firstName, String lastName, Gender gender, Address address, List<Name> previousNames) {
-	super();
-	this.name = new Name(firstName, lastName);
-	this.gender = gender;
-	this.address = address;
-	this.previousNames = previousNames;
+    public Person(String firstName, String lastName, Gender gender, Date birthDate, Address address,
+            List<Name> previousNames) {
+        super();
+        this.name = new Name(firstName, lastName);
+        this.gender = gender;
+        this.address = address;
+        this.previousNames = previousNames;
     }
 
     /**
      * Following class contains column names for current entity.
      */
     protected class ColumnNames {
-	protected static final String PERSON_TYPE = "PERSON_TYPE";
-	private static final String PREVIOUS_NAME = "PREVIOUS_NAME";
-	private static final String PERSON_ID = "PERSON_ID";
-	private static final String ADDRESS_ID = "ADDRESS_ID";
-	private static final String GENDER = "GENDER";
+        protected static final String PERSON_TYPE = "PERSON_TYPE";
+        private static final String PREVIOUS_NAME = "PREVIOUS_NAME";
+        private static final String PERSON_ID = "PERSON_ID";
+        private static final String ADDRESS_ID = "ADDRESS_ID";
+        private static final String GENDER = "GENDER";
+        private static final String BIRTHDATE = "BIRTHDATE";
     }
 
 }
